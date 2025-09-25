@@ -3,6 +3,9 @@ package com.sbi.sbi_payment;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ */
 @Component("upi")
 public class UpiPayment implements IPayment {
 
