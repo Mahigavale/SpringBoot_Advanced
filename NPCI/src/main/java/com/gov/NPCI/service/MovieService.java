@@ -1,5 +1,6 @@
 package com.gov.NPCI.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -36,6 +37,36 @@ public class MovieService {
 	}
 	
 	
+	public String addmovie(Movie movie)
+	{
+		
+	List<Movie> l1=	addMovies().stream().collect(Collectors.toList());
+	
+	
+	l1.add(movie);
+	
+	for(Movie m:l1)
+	{
+		System.out.println(m.getRatings());
+	}
+	
+	return movie.getName()+"added successfully....";
+	}
+	
+//	
+//	public List<Movie> add_1(String name, String collection , double ratings)
+//	{
+//		
+//		//List<Movie> list=new ArrayList();
+//				
+//	 List<Movie>l1	=addMovies().stream().collect(Collectors.toList());
+//		
+//		l1.add(new Movie(name, collection, ratings));
+//		return l1;
+//		 
+//		// return movie.getName()+" added sucessfully....";
+//	}
+	
 	public List<Movie> addMovies()
 	{
 		List<Movie> list=Arrays.asList(new Movie("Dhadak","123.45cr",6.4),
@@ -44,12 +75,15 @@ public class MovieService {
 				new Movie("DDLJ","340cr",9.9),
 				new Movie("Sholay","120cr",10.0),
 				new Movie("Natsamrat","340cr",9.9),
-				new Movie("Kakan","200cr",10.0)		
+				new Movie("Kakan","200cr",10.0)	,
+				new Movie("IRONMAN","340cr",10.0)
+				
+				
 		);
 		return list;
 	}
 	
-	public List<Movie> showallmovies()
+	public  List<Movie> showallmovies()
 	{
 		
 		
@@ -58,9 +92,10 @@ public class MovieService {
 		 * sort the movies in the descending order based on 
 		 * the ratings.
 		 */
+		System.out.println("accessed");
 		
 		return  addMovies().stream().sorted((i,j)->
-		((int)j.ratings-(int)i.ratings)).collect(Collectors.toList());
+		((int)i.ratings-(int)j.ratings)).collect(Collectors.toList());
 	}
 	
 	
@@ -97,4 +132,28 @@ public class MovieService {
 		}
 		return m2;
 	} 
+	
+	
+	public List<Movie> searchbyratings(double ratin)
+	{
+		 List<Movie> list=addMovies();
+		 
+		 
+	 return	 list.stream().filter((i)->(i.ratings==ratin)).collect(Collectors.toList());
+	}
+	
+	public List<Movie> toprated(double ratings,String name)
+	{
+		List<Movie> demo=addMovies();
+		
+		
+	 return	demo.stream().filter((i)->(i.ratings==ratings && (i.name).equalsIgnoreCase(name))).
+				collect(Collectors.toList());
+			
+	}
+	
+	public MovieService()
+	{
+		
+	}
 }
