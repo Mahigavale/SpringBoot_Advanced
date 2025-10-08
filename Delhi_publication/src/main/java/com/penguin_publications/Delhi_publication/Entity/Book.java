@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -67,6 +68,30 @@ public class Book {
 	
 	
 	
+	
+
+//	public Author getAuthor() {
+//		return author;
+//	}
+//
+
+//
+//	public void setAuthor(Author author) {
+//		this.author = author;
+//	}
+
+
+
+//	public Book(int id, String name, double price, double ratings, Author author) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.price = price;
+//		this.ratings = ratings;
+//		
+//	}
+
+
 
 	public Book(int id, String name, double price, double ratings) {
 		super();
