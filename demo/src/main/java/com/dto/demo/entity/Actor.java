@@ -21,6 +21,7 @@ public class Actor {
 	@Column(nullable = false)
 	private String aname;
 
+	@Column(name="mmmmmm")
 	private String mobile;
 	
 	

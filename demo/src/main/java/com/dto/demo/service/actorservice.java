@@ -1,5 +1,6 @@
 package com.dto.demo.service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,17 @@ public class actorservice {
 	}
 	
 	
+	
+	public List<Actor> findname(String aname)
+	{
+		return repo.findByName(aname);
+	}
+	
+	
+	public int  updatenamebyid(int id, String name)
+	{
+		return repo.updatebyid(id, name);
+	}
 	
 	public static ActorDto converter( Actor act)
 	{
