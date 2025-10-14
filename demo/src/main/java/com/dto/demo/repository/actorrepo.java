@@ -25,5 +25,12 @@ public interface actorrepo extends JpaRepository<Actor, Integer> {
 	 @Query(value="update actor set aname= :nm where aid= :id;", nativeQuery=true)
 	 public int  updatebyid(@Param("id") int id, @Param("nm") String name);
 	 
+	 
+	 
+	 @Modifying
+	 @Transactional
+	 @Query(value="delete from actor where aid=:id", nativeQuery=true)
+	 public int delete(@Param("id") int id);
+	 
 }
 

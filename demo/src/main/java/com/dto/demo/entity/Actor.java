@@ -21,12 +21,12 @@ public class Actor {
 	@Column(nullable = false)
 	private String aname;
 
-	@Column(name="mmmmmm")
+	@Column
 	private String mobile;
 	
 	
-	@JoinColumn
-	@OneToMany
+	@JoinColumn(name="aid")
+	@OneToMany 
 	private  List<Movie> movies;
 	
 
