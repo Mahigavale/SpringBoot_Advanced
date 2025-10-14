@@ -1,0 +1,51 @@
+
+
+ Requirements : 
+
+
+ Car: id, name , price, engine , Company (ManyToOne)
+
+Company: id, cname, valuation,  @CEO(OneToOne), @HQ(OneToOne)
+Ceo: id, name, email,  Experience (oneToMany)
+Hq:id, city , state, pincode
+Experience: id,company, tenure, year
+
+//web,jpa,mysql,devtools,swagger,
+
+ {
+ id:,
+name:,
+price:,
+engine:,
+company :
+{
+ id:,
+cnmae:,
+valuation:,
+      ceo:
+          {
+             id
+             cname,
+             email
+             experiences:
+                         [{
+
+                             id:
+                             tenure:
+                              year:
+
+                             },{   
+                                
+                              id:
+                             tenure:
+                              year:
+                                            }   ]
+            },
+ hQ:
+{
+ id:
+state:
+pincode:
+}
+}
+}
