@@ -36,12 +36,12 @@ public class AuthorService {
 		   
 	}
 	
-	public Page<Author> getall(Pageable pageable) throws Exception{
+	public List<Author> getall() throws Exception{
 		
 		System.out.println(repo.findAll().size());
 		if(  !repo.findAll().isEmpty())
 		{
-			return repo.findAll(pageable);
+			return repo.findAll();
 		}
 		throw new Exception ("Something went wrong ");
 	}

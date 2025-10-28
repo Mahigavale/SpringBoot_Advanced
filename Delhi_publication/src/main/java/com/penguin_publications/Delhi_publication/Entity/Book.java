@@ -1,5 +1,7 @@
 package com.penguin_publications.Delhi_publication.Entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Book {
@@ -58,8 +65,14 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@NotEmpty(message ="field must not be empty.")
+	@NotBlank(message ="only whitespaces are not allowed.")
+	@NotNull(message="Not null")
+	@Length(min=4,max=10,message="the acceptable length is 4 ,10")
 	private String name;
 	private double price;
+	@Max(10)
 	private double ratings;
 	
 	

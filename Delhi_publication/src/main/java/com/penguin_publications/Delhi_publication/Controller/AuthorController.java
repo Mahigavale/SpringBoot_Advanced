@@ -44,19 +44,10 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/get-all-authors")
-	public Page<Author> getall( @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "2") int size,
-            @RequestParam(defaultValue = "authorName") String sortBy,
-            @RequestParam(defaultValue = "true") boolean descending) throws Exception
+	public List<Author> getall() throws Exception
 	{
-		Sort sort = descending ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
-        Pageable pageable = PageRequest.of(page, size, sort);
-        //return productService.findAll(pageable);
-		
-		return service.getall(pageable);
+		return service.getall();
 	}
-	
-	
 }
 
 

@@ -1,0 +1,20 @@
+class Demo {
+	public static void change(String str3) {
+		String str = str3;
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < str.length(); i++) {
+			String str2 = null;
+			if (str.charAt(i) == 'E' || str.charAt(i) == 'O' || str.charAt(i) == 'U' || str.charAt(i) == 'A'|| str.charAt(i) == 'I') {
+				StringBuffer sb3 = new StringBuffer();
+
+				str2 = sb3.append(str.charAt(i)).toString().toLowerCase();
+				sb.append(str2);
+			} else {
+				sb.append(str.charAt(i));
+			}
+		}
+		System.out.println(sb);
+	}
+}
+
+// Demo.change("WELCOME"); str="WELCOME";   sb="WeLCoMe"  str2=null  sb3=""  str2=""+"e"
