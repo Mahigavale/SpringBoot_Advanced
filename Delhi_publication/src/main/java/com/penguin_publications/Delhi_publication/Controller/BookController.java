@@ -25,7 +25,7 @@ import jakarta.validation.Valid;
 
 @RequestMapping("/book-controller")
 @RestController
-@CrossOrigin(allowedHeaders ="*")
+@CrossOrigin(allowedHeaders = "http://localhost:5173/")
 public class BookController {
 
 	
@@ -44,8 +44,12 @@ public class BookController {
 	@GetMapping("/get-all-books")
 	public Page<Book> getall(@RequestParam int pagenumber,@RequestParam  int pagesize,
 			@RequestParam String sortre, @RequestParam String order
-			)
+			) throws Exception
 	{
+		
+		
+		//throw  new Exception("hurray");
+		
 		/**
 		 * A)
 		 * Pageable pageable=PageRequest.OfSize(int size) => default page number =>0

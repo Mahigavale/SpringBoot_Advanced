@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 
 @Entity
 public class Author {
@@ -32,6 +33,7 @@ public class Author {
 	@Column(nullable=false)
 	private String authorName;
 	
+	@Email
 	private String email;
 	
 	
