@@ -1,0 +1,13 @@
+package com.security.DaoAcess;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class DaoAcessApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
