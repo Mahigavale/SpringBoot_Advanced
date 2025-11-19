@@ -17,15 +17,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 	
 	
-//	@Autowired
-//	private UserDetailsserviceimpl myuserdetailsserivce;
+	@Autowired
+	private UserDetailsserviceimpl myuserdetailsserivce;
 	
 	@Bean
 	public SecurityFilterChain mysecurity(HttpSecurity security) throws Exception
 	{
 		security.csrf().disable()
 		.authorizeHttpRequests()
-		.requestMatchers(HttpMethod.POST).permitAll()
+		.requestMatchers(HttpMethod.POST).hasRole("ADMIN")
+		.requestMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")  //ROLE_ADMIN
 		.anyRequest()
 		.authenticated()
 		.and()

@@ -1,5 +1,7 @@
 package com.dto.demo.entity;
 
+import java.io.Serializable;
+
 import org.antlr.v4.runtime.misc.NotNull;
 
 import jakarta.persistence.Column;
@@ -9,7 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Movie {
+public class Movie implements Serializable {
+	
+	
+	private static long id_m =1l;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

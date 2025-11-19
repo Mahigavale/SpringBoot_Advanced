@@ -3,12 +3,15 @@ package com.dto.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dto.demo.DTO.ActorDto;
@@ -19,6 +22,7 @@ import com.dto.demo.service.actorservice;
 import com.dto.demo.service.movieservice;
 
 @RestController
+@RequestMapping("/actoradmin")
 public class ActorController {
 
 	
@@ -56,8 +60,13 @@ public class ActorController {
 	}
 	
 	@GetMapping("/find-all")
-	public List<Actor> finadll()
+	@Cacheable("actors")
+	public List<Actor> finadll() throws InterruptedException
 	{
+		
+		System.out.println("from the database.... actor");
+		Thread.sleep(5000);
+		
 		return  repo.findAll();
 		
 		
@@ -72,4 +81,6 @@ public class ActorController {
 		 repo.delete(id);
 		 return "deleted with id:"+id;
 	}
+	
+	//@CachePut("actors")
 }

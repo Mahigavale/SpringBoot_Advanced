@@ -26,6 +26,7 @@ public class UserService implements UserServiceInterface {
 		user.setUserId(entity.getUserId());
 		user.setUserPassword(encoder.encode(entity.getUserPassword()));
 		user.setUserName(entity.getUserName());
+		 user.setUserRoles(entity.getUserRoles());
 		return repo.save(user);
 		
 	}

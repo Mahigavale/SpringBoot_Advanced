@@ -3,6 +3,7 @@ package com.security.DaoAcess.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,10 +25,13 @@ public class UserController {
 	public UserEntity adduser(@RequestBody UserEntity entity)
 	{
 	
+		
+		List<String> roles=entity.getUserRoles();
+		roles.stream().forEach(i->System.out.println(i));
 		return service.addUser(entity);
 	}
 	
-	
+
 	@GetMapping("/get-users")
 	public List<UserEntity> getall()
 	{

@@ -1,5 +1,7 @@
 package com.security.DaoAcess.Entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,11 @@ public class UserEntity {
 	String userName;
 	String userEmail;
 	String userPassword;
+	 List<String> userRoles;
+	
+	//ROLE_ADMIN
+	//ROLE_USER
+	
 	public int getUserId() {
 		return UserId;
 	}
@@ -40,6 +47,14 @@ public class UserEntity {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+	public List<String> getUserRoles() {
+		return userRoles;
+	}
+	public void setUserRoles(List<String> userRoles) {
+		this.userRoles = userRoles;
+	}
+	
+	
 	
 	
 }

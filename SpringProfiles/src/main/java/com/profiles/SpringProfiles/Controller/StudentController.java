@@ -59,7 +59,24 @@ public class StudentController {
 	
 	
 	
+	
+//	@ExceptionHandler(SameRequestException.class)
+//	public Map<String, String> handleit2(SameRequestException ex)
+//	{
+//		
+//		Ma
+//	}
 	 
 }
 
+
+
+
+class  SameRequestException extends Exception
+{
+	public  SameRequestException(String str)
+	{
+		super(str);
+	}
+}
 
