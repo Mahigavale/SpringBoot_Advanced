@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,17 +22,36 @@ public class SecurityConfiguration {
 	private UserDetailsserviceimpl myuserdetailsserivce;
 	
 	@Bean
-	public SecurityFilterChain mysecurity(HttpSecurity security) throws Exception
+	public SecurityFilterChain mysecurity(HttpSecurity http) throws Exception
 	{
-		security.csrf().disable()
-		.authorizeHttpRequests()
-		.requestMatchers(HttpMethod.POST).hasRole("ADMIN")
-		.requestMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")  //ROLE_ADMIN
-		.anyRequest()
-		.authenticated()
-		.and()
-		.httpBasic();
-		return security.build();
+		
+	        http
+	            // 1. ENABLE CORS Integration
+	            // This tells Spring Security to look for and use the global 
+	            // CorsConfigurationSource bean (like the CorsConfig class below).
+	            .cors(Customizer.withDefaults()) 
+
+	            // 2. Disable CSRF for API endpoints
+	            .csrf(csrf -> csrf.disable())
+
+	            // 3. Authorization Rules
+	            .authorizeHttpRequests(authorize -> authorize
+	                // CRITICAL FIX: Allow all OPTIONS requests (the CORS preflight)
+	                // These requests must bypass security checks.
+	                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
+	                
+	                // Your existing rules
+	                .requestMatchers(HttpMethod.POST).hasRole("ADMIN")
+	                .requestMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")
+	                
+	                // All other requests require authentication
+	                .anyRequest().authenticated()
+	            )
+	            
+	            // 4. Use HTTP Basic authentication
+	            .httpBasic(Customizer.withDefaults());
+
+	        return http.build();
 	}
 	
 	
