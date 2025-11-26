@@ -41,7 +41,7 @@ public class SecurityConfiguration {
 	                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
 	                
 	                // Your existing rules
-	                .requestMatchers(HttpMethod.POST).hasRole("ADMIN")
+	                .requestMatchers(HttpMethod.POST).permitAll()
 	                .requestMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")
 	                
 	                // All other requests require authentication
